@@ -11,6 +11,13 @@ import NotFound from '@/pages/NotFound'
 
 Vue.use(Router)
 
+// auth navigation guard
+const requireAuth = (to, from, next) => {
+  const isAuth = localStorage.getItem('token')
+  const loginPath = `/login?rPath=${encodeURIComponent(to.path)}`
+  isAuth ? next() : next(loginPath)
+}
+
 export default new Router({
   routes: [
     {
@@ -19,19 +26,20 @@ export default new Router({
       component: Home
     },
     {
-      path: '/Login',
+      path: '/login',
       name: 'Login',
       component: Login
     },
     {
-      path: '/Public',
+      path: '/public',
       name: 'Public',
       component: Public
     },
     {
-      path: '/Secure',
+      path: '/secure',
       name: 'Secure',
-      component: Secure
+      component: Secure,
+      beforeEnter: requireAuth
     },
     {
       path: '/HelloWorld',
