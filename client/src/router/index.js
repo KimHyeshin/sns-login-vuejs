@@ -7,6 +7,8 @@ import Login from '@/pages/Login'
 import Public from '@/pages/Public'
 import Secure from '@/pages/Secure'
 
+import NotFound from '@/pages/NotFound'
+
 Vue.use(Router)
 
 export default new Router({
@@ -35,6 +37,10 @@ export default new Router({
       path: '/HelloWorld',
       name: 'HelloWorld',
       component: HelloWorld
+    },
+    {
+      path: '*',
+      component: NotFound
     }
   ]
 })
