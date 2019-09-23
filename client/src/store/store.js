@@ -19,7 +19,7 @@ export const store = new Vuex.Store({
      */
     state: {
         CONSTANTS: constants,
-        value: 0
+        authenticated: false
     },
     /**
      * 변경된 state 값을 받아오기 위한 Getters
@@ -33,10 +33,7 @@ export const store = new Vuex.Store({
         },
         getConstantDefault: state => {
             return state.CONSTANTS.CONSTANT_DEFAULT;
-        },
-        getValue: state => {
-            return state.value;
-        },
+        }
     },
     /**
      * state 값을 변경하기 위한 mutations

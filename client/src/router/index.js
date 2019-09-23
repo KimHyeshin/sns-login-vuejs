@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import { store } from '@/store/store'
 
 // views
 import Home from '@/views/Home'
@@ -48,9 +49,10 @@ export const router = new VueRouter({
  * auth navigation guard
  */
 router.beforeEach(function (to, from, next) {
-  if (to.matched.some(function(routeInfo) {
+  const authRequired = to.matched.some(function(routeInfo) {
     return routeInfo.meta.authRequired;
-  })) {
+  });
+  if (authRequired && store.state.authenticated === false) {
     next({ path: '/login'});
   } else {
     next();

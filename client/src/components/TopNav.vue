@@ -19,7 +19,7 @@
   a {
     margin-right: 10px;
   }
-  a.router-link-exact-active {
+  .router-link-exact-active {
     background: lightblue;
   }
 </style>

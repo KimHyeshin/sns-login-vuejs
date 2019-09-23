@@ -18,7 +18,7 @@ export const mutations = {
         return state.value = payload.value;
        }
      */
-    addValue: function (state) {
-        return state.value++;
+    setAuthentication(state, status) {
+        state.authenticated = status;
     }
 };
