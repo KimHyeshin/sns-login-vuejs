@@ -32,11 +32,27 @@ export const router = new VueRouter({
     {
       path: '/secure',
       name: 'Secure',
-      component: Secure
+      component: Secure,
+      meta: {
+        authRequired: true
+      }
     },
     {
       path: '*',
       component: Page404
     }
   ]
+});
+
+/**
+ * auth navigation guard
+ */
+router.beforeEach(function (to, from, next) {
+  if (to.matched.some(function(routeInfo) {
+    return routeInfo.meta.authRequired;
+  })) {
+    next({ path: '/login'});
+  } else {
+    next();
+  }
 });

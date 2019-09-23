@@ -47,4 +47,5 @@ npm run dev
         - gitignore 업데이트
         - [vue 스캐폴딩](https://github.com/KimHyeshin/vue-code-scaffolding)
     - [2019.09.24] TopNav 추가
+    - [2019.09.24] auth navigation guard 추가
 
