@@ -1,5 +1,19 @@
 const express = require('express');
 const app = express();
+const session = require('express-session'); // 세션 설정
+const passport = require('passport'); // 여기와
+const passportConfig = require('./config/passport'); // 여기
+
+const cors = require('cors');
+app.use(cors());
+
+/**
+ * passport
+ */
+app.use(session({ secret: 'secret', resave: true, saveUninitialized: false })); // 세션 활성화
+app.use(passport.initialize()); // passport 구동
+app.use(passport.session()); // 세션 연결
+passportConfig();
 
 /**
  * server
@@ -18,8 +32,8 @@ app.use(express.urlencoded( {extended : true } ));
 /**
  * routing controllor
  */
-const commonRoute = require('./api/common');
-const naverLoginRoute = require('./api/login/naver');
+const commonRoute = require('./router/common');
+const naverLoginRoute = require('./router/login/naver');
 app.use('/', commonRoute);
 app.use('/naverlogin', naverLoginRoute);
 

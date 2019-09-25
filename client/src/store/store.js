@@ -33,6 +33,9 @@ export const store = new Vuex.Store({
         },
         getConstantDefault: state => {
             return state.CONSTANTS.CONSTANT_DEFAULT;
+        },
+        getAuth: state => {
+            return state.authenticated;
         }
     },
     /**
