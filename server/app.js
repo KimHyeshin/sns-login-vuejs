@@ -18,8 +18,8 @@ app.use(express.urlencoded( {extended : true } ));
 /**
  * routing controllor
  */
-const commonRoute = require('./api/common');
-const naverLoginRoute = require('./api/login/naver');
+const commonRoute = require('./router/common');
+const naverLoginRoute = require('./router/login/naver');
 app.use('/', commonRoute);
 app.use('/naverlogin', naverLoginRoute);
 

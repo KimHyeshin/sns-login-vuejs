@@ -3,8 +3,7 @@
     Login
     <div>
       <p><button @click="login">Login (Vuex 테스트)</button></p>
-      <p><button @click="loginNaver"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></button></p>
-<!--      <p><a :href="loginUrl.naver"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a></p>-->
+      <p><a :href="loginUrl.naver"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a></p>
     </div>
   </div>
 </template>
