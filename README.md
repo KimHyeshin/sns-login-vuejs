@@ -55,6 +55,8 @@ npm run dev
         - .env 추가 (어플리케이션 키, ID 등을 관리)
         - /naverlogin route 추가
         - /naverlogin callback 추가
+    - [2019.09.25] client에 loginUrl 추가
+        - .env에 login관련 환경변수 추가
         
         
         
