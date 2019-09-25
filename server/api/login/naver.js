@@ -1,17 +1,8 @@
 const express = require('express');
 const app = express();
 const router = express.Router();
-const config = require('dotenv').config()
+const config = require('dotenv').config();
 const redirectURI = config.parsed.CALLBACK_URL_NAVER;
-
-router.get('/', function (req, res) {
-    console.log('/naverlogin');
-    console.log(config.parsed)
-    const state = 'RAMDOM_STATE';
-    const apiUrl = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${config.parsed.CLIENT_ID_NAVER}&redirect_uri=${redirectURI}&state=${state}`;
-    res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
-    res.end(`<a href="${apiUrl}"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a>`);
-});
 
 router.get('/callback', function (req, res) {
     console.log('/naverlogin/callback');

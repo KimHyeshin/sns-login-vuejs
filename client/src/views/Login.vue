@@ -1,7 +1,10 @@
 <template>
   <div>
     Login
-    <button @click="login">Login</button>
+    <div>
+      <p><button @click="login">Login (Vuex 테스트)</button></p>
+      <p><a :href="loginUrl.naver"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a></p>
+    </div>
   </div>
 </template>
 
@@ -11,7 +14,11 @@
   export default {
     name: 'Login',
     data() {
-      return {}
+      return {
+        loginUrl : {
+          naver : `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.VUE_APP_CLIENT_ID_NAVER}&redirect_uri=${process.env.VUE_APP_CALLBACK_URL_NAVER}&state=STATE`
+        }
+      }
     },
     methods: {
       ...mapMutations({
