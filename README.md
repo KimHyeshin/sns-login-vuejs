@@ -50,4 +50,12 @@ npm run dev
     - [2019.09.24] auth navigation guard 추가
         - Vuex store에 authenticated 추가
         
+- feature-2  
+    - [2019.09.25] server에 naver login 샘플 코드 추가
+        - .env 추가 (어플리케이션 키, ID 등을 관리)
+        - /naverlogin route 추가
+        - /naverlogin callback 추가
+        
+        
+        
 
