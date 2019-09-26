@@ -20,5 +20,13 @@ export const mutations = {
      */
     setAuthentication(state, status) {
         state.authenticated = status;
+    },
+
+    login(state, {accessToken}){
+        state.accessToken = accessToken
+    },
+
+    logout (state) {
+        state.accessToken = null
     }
 };

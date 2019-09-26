@@ -19,7 +19,8 @@ export const store = new Vuex.Store({
      */
     state: {
         CONSTANTS: constants,
-        authenticated: false
+        authenticated: false,
+        accessToken: null
     },
     /**
      * 변경된 state 값을 받아오기 위한 Getters

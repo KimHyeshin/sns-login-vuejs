@@ -9,16 +9,15 @@
       </div>
     </div>
     <div v-else>
-      <p><button @click="login">Login (Vuex 테스트)</button></p>
-      <!--<p><button @click="loginNaver"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></button></p>-->
-      <p><a :href="loginUrl.naver"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a></p>
+<!--      <p><button @click="login">Login (Vuex 테스트)</button></p>-->
+      <p><button @click="login"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></button></p>
+<!--      <p><a :href="loginUrl.naver"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a></p>-->
     </div>
   </div>
 </template>
 
 <script>
-  import { mapGetters, mapMutations } from 'vuex'
-  import axios from 'axios'
+  import { mapGetters, mapActions } from 'vuex'
 
   export default {
     name: 'Login',
@@ -34,10 +33,6 @@
       }
     },
     mounted() {
-      console.log(this.$route.query);
-      if(this.$route.query.isAuth === 'true'){
-        this.login()
-      }
     },
     computed: {
       ...mapGetters([
@@ -45,28 +40,12 @@
       ])
     },
     methods: {
-      ...mapMutations({
-        setAuthentication: 'setAuthentication'
-      }),
       login() {
-        this.loginInfo.type = this.$route.query.auth_type;
-        this.loginInfo.id = this.$route.query.auth_id;
-        this.setAuthentication(true);
-        // this.$router.replace(this.$route.query.redirect || '/')
-      },
-      loginNaver() {
-        // this.setAuthentication(true);
-        // this.$router.replace(this.$route.query.redirect || '/')
-        axios.get('http://localhost:3030/naverlogin', {
-          headers: {},
-          params: {}
-        })
-                .then(function (response) {
-                  console.log(response);
-                })
-                .catch(function (error) {
-                  console.log(error);
-                })
+        this.$store.dispatch('login', {
+          provider : '',
+          id : '',
+          password : ''
+        });
       }
     }
   }

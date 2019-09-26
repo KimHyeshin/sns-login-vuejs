@@ -57,11 +57,14 @@ npm run dev
         - /naverlogin callback 추가
     - [2019.09.25] client에 loginUrl 추가
         - .env에 login관련 환경변수 추가
-        
-- feature-4         
+   
+- feature-3        
     - [2019.09.25] server에 passport 추가
         - passport-naver 추가 
         - lowdb 추가
         - 연동 코드 작성
+    - [2019.09.26] auth 로직 수정
+        - router 네비게이션 가드에 returnPath param 추가
+        - Vuex mutations, actions에 인증 관련 함수 추가 
         
 
