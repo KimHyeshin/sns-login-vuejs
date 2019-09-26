@@ -10,6 +10,11 @@ export default {
   data () {
     return {
     }
+  },
+  mounted() {
+    console.log(this.$route.matched);
+    console.log(this.$route.params);
+    console.log(this.$route.query);
   }
 }
 </script>

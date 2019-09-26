@@ -18,7 +18,25 @@ export const mutations = {
         return state.value = payload.value;
        }
      */
-    setAuthentication(state, status) {
+    setAuth(state, status) {
         state.authenticated = status;
+    },
+
+    setReturnPath(state, returnPath){
+        state.returnPath = returnPath
+    },
+
+    login(state, user){
+        state.user = user
+    },
+
+    logout (state) {
+        state.user = {
+            authType: '',
+            authId: '',
+            authName: '',
+            authEmail: '',
+            accessToken: ''
+        }
     }
 };

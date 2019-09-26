@@ -53,7 +53,7 @@ router.beforeEach(function (to, from, next) {
     return routeInfo.meta.authRequired;
   });
   if (authRequired && store.state.authenticated === false) {
-    next({ path: '/login'});
+    next({ path: `/login?returnPath=${to.path}`});
   } else {
     next();
   }
