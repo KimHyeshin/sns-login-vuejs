@@ -19,12 +19,21 @@ export const actions = {
           });
         },
      */
-    login({commit}, {provider, id, password}) {
-        return axios.post(`${process.env.VUE_APP_AUTH_HOST}/login${provider}`, {id, password})
-            .then(({data}) => commit('login', data))
+    login({commit}, {user}) {
+        return axios.get(`${process.env.VUE_APP_AUTH_HOST}/login?user=${user}`)
+            .then(({data}) => {
+                commit('setAuth', true);
+                commit('login', data);
+            })
+            .catch(({message}) => { console.log(message)});
     },
-    logout ({commit}) {
-        commit('logout')
-    },
+    logout ({commit}, {provider, user}) {
+        return axios.get(`${process.env.VUE_APP_AUTH_HOST}/logout`, {provider, user})
+            .then(() => {
+                commit('setAuth', false);
+                commit('logout');
+            })
+            .catch(({message}) => { console.log(message)});
+    }
 
 };

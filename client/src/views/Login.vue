@@ -2,50 +2,79 @@
   <div>
     Login
     <div v-if="getAuth">
-      isLogin is true!!
+      <h1>User Info</h1>
       <div>
-        <div>Type : {{loginInfo.type}}</div>
-        <div>ID : {{loginInfo.id}}</div>
+        <div>authType : {{getUser.authType}}</div>
+        <div>authId : {{getUser.authId}}</div>
+        <div>authName : {{getUser.authName}}</div>
+        <div>authEmail : {{getUser.authEmail}}</div>
+        <div>accessToken : {{getUser.accessToken}}</div>
+      </div>
+      <div>
+        <p><button @click="logout">logout</button></p>
       </div>
     </div>
     <div v-else>
-<!--      <p><button @click="login">Login (Vuex 테스트)</button></p>-->
-      <p><button @click="login"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></button></p>
-<!--      <p><a :href="loginUrl.naver"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a></p>-->
+      <p><a :href="loginUrl.naver"><img height="50" :src="loginImage.naver"/></a></p>
     </div>
   </div>
 </template>
 
 <script>
-  import { mapGetters, mapActions } from 'vuex'
+  import { mapGetters, mapMutations } from 'vuex'
 
   export default {
     name: 'Login',
     data() {
       return {
-        loginInfo : {
-          type: '',
-          id: ''
+        loginUrl: {
+          naver: `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.VUE_APP_CLIENT_ID_NAVER}&redirect_uri=${process.env.VUE_APP_CALLBACK_URL_NAVER}&state=STATE`
         },
-        loginUrl : {
-          naver : `http://localhost:3030/naverlogin`
-        }
+        loginImage: {
+          naver: `http://static.nid.naver.com/oauth/small_g_in.PNG`
+        },
+        msg: ''
       }
     },
     mounted() {
+        console.log(this.$route.params);
+        console.log(this.$route.query);
+        if(this.$route.query.returnPath){
+          this.setReturnPath(this.$route.query.returnPath);
+        }
+        if(this.$route.query.user){
+          this.login();
+        }
     },
     computed: {
       ...mapGetters([
-        'getAuth'
+        'getAuth',
+        'getReturnPath',
+        'getUser',
       ])
     },
     methods: {
+      ...mapMutations({
+        setReturnPath: 'setReturnPath'
+      }),
       login() {
         this.$store.dispatch('login', {
-          provider : '',
-          id : '',
-          password : ''
-        });
+          user : this.$route.query.user
+        }).then(() => this.redirect())
+                .catch(({message}) => this.msg = message);
+      },
+      redirect() {
+        let returnPath = this.getReturnPath;
+        if(returnPath !== null){
+          this.setReturnPath(null);
+          this.$router.push(returnPath);
+        }
+      },
+      logout() {
+        this.$store.dispatch('logout', {
+          provider : this.getUser.authType,
+          user : this.getUser.authId
+        })
       }
     }
   }

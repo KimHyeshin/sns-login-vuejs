@@ -5,14 +5,20 @@ const adapter = new FileSync('db.json');
 const db = low(adapter);
 
 const database = {
-  storeUserInfo: function (info, done){
-      // data 저장하기
-      db.get('users')
-          .push(info)
-          .write();
+    storeUserInfo: function (info, done) {
+        // data 저장하기
+        db.get('users')
+            .push(info)
+            .write();
 
-      done(null, info);
-  }
+        done(null, info);
+    },
+    getUserInfo: function () {
+        return {}
+    },
+    setUserLogout: function () {
+        return true
+    }
 };
 
 module.exports = database;

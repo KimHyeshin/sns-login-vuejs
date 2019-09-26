@@ -21,23 +21,12 @@ module.exports = () => {
         }, (req, accessToken, refreshToken, profile, done) => {
             var _profile = profile._json;
             database.storeUserInfo({
-                'auth_type': 'naver',
-                'auth_id': _profile.id,
-                'auth_name': _profile.nickname,
-                'auth_email': _profile.email,
+                'authType': 'naver',
+                'authId': _profile.id,
+                'authName': _profile.nickname,
+                'authEmail': _profile.email,
                 'accessToken': accessToken
             }, done);
-
-            // process.nextTick(function () {
-            //     const user = {
-            //         name: profile.displayName,
-            //         email: profile.emails[0].value,
-            //         username: profile.displayName,
-            //         provider: 'naver',
-            //         naver: profile._json
-            //     };
-            //     return done(null, user);
-            // });
         }
     ));
 }

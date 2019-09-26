@@ -66,5 +66,7 @@ npm run dev
     - [2019.09.26] auth 로직 수정
         - router 네비게이션 가드에 returnPath param 추가
         - Vuex mutations, actions에 인증 관련 함수 추가 
+        - server에 login/logout 로직 추가
+        
         
 

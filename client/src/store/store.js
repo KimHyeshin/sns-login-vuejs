@@ -20,7 +20,14 @@ export const store = new Vuex.Store({
     state: {
         CONSTANTS: constants,
         authenticated: false,
-        accessToken: null
+        returnPath : null,
+        user: {
+            authType: '',
+            authId: '',
+            authName: '',
+            authEmail: '',
+            accessToken: ''
+        }
     },
     /**
      * 변경된 state 값을 받아오기 위한 Getters
@@ -37,6 +44,12 @@ export const store = new Vuex.Store({
         },
         getAuth: state => {
             return state.authenticated;
+        },
+        getReturnPath: state => {
+            return state.returnPath;
+        },
+        getUser: state => {
+            return state.user;
         }
     },
     /**

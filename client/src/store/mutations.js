@@ -18,15 +18,25 @@ export const mutations = {
         return state.value = payload.value;
        }
      */
-    setAuthentication(state, status) {
+    setAuth(state, status) {
         state.authenticated = status;
     },
 
-    login(state, {accessToken}){
-        state.accessToken = accessToken
+    setReturnPath(state, returnPath){
+        state.returnPath = returnPath
+    },
+
+    login(state, user){
+        state.user = user
     },
 
     logout (state) {
-        state.accessToken = null
+        state.user = {
+            authType: '',
+            authId: '',
+            authName: '',
+            authEmail: '',
+            accessToken: ''
+        }
     }
 };
