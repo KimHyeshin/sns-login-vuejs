@@ -13,11 +13,11 @@ const database = {
 
         done(null, info);
     },
-    getUserInfo: function () {
-        return {}
-    },
-    setUserLogout: function () {
-        return true
+    getUserInfo: function ({authType, authId}) {
+        let result = db.get('users')
+            .find({ authType,  authId})
+            .value();
+        return result
     }
 };
 

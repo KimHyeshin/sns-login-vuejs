@@ -17,18 +17,18 @@ router.get('/login', function(req, res, next){
     res.json({status:200, msg:"사용자 정보가 조회되었습니다.", data});
 });
 
-router.get('/logout', function(req, res, next){
-    console.log('/logout');
-    console.log(req.query.user);
-    const authType = req.query.user.split('|')[0];
-    const authId = req.query.user.split('|')[1];
-    const result = database.setUserLogout({authType, authId});
-    if(result){
-        res.json({status:200, msg:"logout 처리가 완료되었습니다."});
-    }else{
-        res.json({status:500, msg:"logout 처리 중 에러가 발생하였습니다."});
-    }
-
-});
+// router.get('/logout', function(req, res, next){
+//     console.log('/logout');
+//     console.log(req.query.user);
+//     const authType = req.query.user.split('|')[0];
+//     const authId = req.query.user.split('|')[1];
+//     const result = database.setUserLogout({authType, authId});
+//     if(result){
+//         res.json({status:200, msg:"logout 처리가 완료되었습니다."});
+//     }else{
+//         res.json({status:500, msg:"logout 처리 중 에러가 발생하였습니다."});
+//     }
+//
+// });
 
 module.exports = router;

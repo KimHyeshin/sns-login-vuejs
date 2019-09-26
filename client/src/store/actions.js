@@ -23,17 +23,18 @@ export const actions = {
         return axios.get(`${process.env.VUE_APP_AUTH_HOST}/login?user=${user}`)
             .then(({data}) => {
                 commit('setAuth', true);
-                commit('login', data);
+                commit('login', data.data);
             })
             .catch(({message}) => { console.log(message)});
     },
-    logout ({commit}, {provider, user}) {
-        return axios.get(`${process.env.VUE_APP_AUTH_HOST}/logout`, {provider, user})
+    logout ({commit}) {
+        /*return axios.get(`${process.env.VUE_APP_AUTH_HOST}/logout`, {provider, user})
             .then(() => {
                 commit('setAuth', false);
                 commit('logout');
             })
-            .catch(({message}) => { console.log(message)});
+            .catch(({message}) => { console.log(message)});*/
+        return commit('setAuth', false);
     }
 
 };
