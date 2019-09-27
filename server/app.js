@@ -34,7 +34,9 @@ app.use(express.urlencoded( {extended : true } ));
  */
 const commonRoute = require('./router/common');
 const naverLoginRoute = require('./router/login/naver');
+const facebookLoginRoute = require('./router/login/facebook');
 app.use('/', commonRoute);
 app.use('/loginNaver', naverLoginRoute);
+app.use('/loginFacebook', facebookLoginRoute);
 
 
