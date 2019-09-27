@@ -10,7 +10,8 @@ module.exports = () => {
     });
     // 인증 후, 페이지 접근시 마다 사용자 정보를 Session에서 읽어옴.
     passport.deserializeUser(function (user, done) {
-        done(null, user);
+        const userInfo = database.getUserInfo({ authType : user.authType, authId : user.authId});
+        done(null, userInfo);
     });
 
     passport.use(new NaverStrategy({
