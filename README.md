@@ -80,13 +80,16 @@ npm run dev
     - Vuex mutations, actions에 인증 관련 함수 추가 
     - server에 login/logout 로직 추가
     - 로그인 시 가입자정보가 있으면 해당 정보를 리턴하고 가입자 정보가 없는 경우 저장하도록 변경
-        
+
+- [2019.09.28] passport deserializeUser에 로직 추가
+    - 인증 후, 페이지 접근시 마다 사용자 정보를 Session에서 읽어와서 바로 데이터 넘기도록 수정
+         
 #### feature-4 : passport-facebook으로 페이스북 로그인 기능 구현
 - [2019.09.28] passport-facebook 추가
     - FacebookStrategy 설정 추가
     - JavaScript용 Facebook SDK 추가
     - Facebook 로그인 버튼 추가 (https://developers.facebook.com/docs/facebook-login/web?locale=ko_KR#loginbutton)    
     - 이슈 ) 페이스북 로그인을 사용하려면 https 적용해야함. 버튼 주석처리
-    
+            
         
 
