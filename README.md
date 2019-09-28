@@ -86,5 +86,7 @@ npm run dev
     - FacebookStrategy 설정 추가
     - JavaScript용 Facebook SDK 추가
     - Facebook 로그인 버튼 추가 (https://developers.facebook.com/docs/facebook-login/web?locale=ko_KR#loginbutton)    
+    - 이슈 ) 페이스북 로그인을 사용하려면 https 적용해야함. 버튼 주석처리
+    
         
 

@@ -16,7 +16,7 @@
     </div>
     <div v-else>
       <p><a :href="loginUrl.naver"><img height="50" :src="loginImage.naver"/></a></p>
-      <div class="fb-login-button" data-width="" data-size="large" data-button-type="login_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
+      <!--<div class="fb-login-button" data-width="" data-size="large" data-button-type="login_with" data-auto-logout-link="false" data-use-continue-as="false"></div>-->
     </div>
   </div>
 </template>
