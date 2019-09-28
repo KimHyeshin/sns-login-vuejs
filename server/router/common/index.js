@@ -14,7 +14,13 @@ router.get('/login', function(req, res, next){
     const authType = req.query.user.split('|')[0];
     const authId = req.query.user.split('|')[1];
     const data = database.getUserInfo({authType, authId});
-    res.json({status:200, msg:"사용자 정보가 조회되었습니다.", data});
+    console.log('result');
+    console.log(data);
+    if(data){
+        res.json({status:200, msg:"사용자 정보가 조회되었습니다.", data});
+    }else{
+        res.status(500).json({status:500, msg:"사용자 정보를 조회하지 못했습니다."});
+    }
 });
 
 // router.get('/logout', function(req, res, next){

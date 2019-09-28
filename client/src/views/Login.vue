@@ -15,8 +15,12 @@
       </div>
     </div>
     <div v-else>
+      <!--Naver-->
       <p><a :href="loginUrl.naver"><img height="50" :src="loginImage.naver"/></a></p>
+      <!--Facebook-->
       <!--<div class="fb-login-button" data-width="" data-size="large" data-button-type="login_with" data-auto-logout-link="false" data-use-continue-as="false"></div>-->
+      <!--Kakao-->
+      <p><a :href="loginUrl.kakao"><img height="50" :src="loginImage.kakao"/></a></p>
     </div>
   </div>
 </template>
@@ -29,10 +33,12 @@
     data() {
       return {
         loginUrl: {
-          naver: `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.VUE_APP_CLIENT_ID_NAVER}&redirect_uri=${process.env.VUE_APP_CALLBACK_URL_NAVER}&state=STATE`
+          naver: `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.VUE_APP_CLIENT_ID_NAVER}&redirect_uri=${process.env.VUE_APP_CALLBACK_URL_NAVER}&state=STATE`,
+          kakao: `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.VUE_APP_CLIENT_ID_KAKAO}&redirect_uri=${process.env.VUE_APP_CALLBACK_URL_KAKAO}&response_type=code`
         },
         loginImage: {
-          naver: `http://static.nid.naver.com/oauth/small_g_in.PNG`
+          naver: 'http://static.nid.naver.com/oauth/small_g_in.PNG',
+          kakao: require('@/assets/images/kakao_account_login_btn_medium_narrow.png')
         },
         msg: ''
       }
@@ -75,7 +81,8 @@
         this.$store.dispatch('logout', {
           provider : this.getUser.authType,
           user : this.getUser.authId
-        })
+        });
+        this.$router.replace({ name: "Login", params: {}, query: {} });
       }
     }
   }

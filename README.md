@@ -91,5 +91,9 @@ npm run dev
     - Facebook 로그인 버튼 추가 (https://developers.facebook.com/docs/facebook-login/web?locale=ko_KR#loginbutton)    
     - 이슈 ) 페이스북 로그인을 사용하려면 https 적용해야함. 버튼 주석처리
             
-        
+#### feature-5 : passport-kakao로 카카오 로그인 기능 구현
+- [2019.09.29] .env, .env.local 추가하여 키 관리
+- [2019.09.29] passport-kakao 추가
+    - KakaoStrategy 설정 추가
+    - Kakao 로그인 버튼 추가
 
