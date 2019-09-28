@@ -3,9 +3,17 @@ const app = express();
 const session = require('express-session'); // 세션 설정
 const passport = require('passport'); // 여기와
 const passportConfig = require('./config/passport'); // 여기
-
+/**
+ * cors
+ * cross-origin 처리
+ */
 const cors = require('cors');
 app.use(cors());
+
+/**
+ * .env 환경변수 처리
+ */
+require('dotenv-flow').config();
 
 /**
  * passport

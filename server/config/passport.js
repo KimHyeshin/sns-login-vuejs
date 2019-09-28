@@ -1,7 +1,6 @@
 const passport = require('passport');
 const NaverStrategy = require('passport-naver').Strategy;
 const FacebookStrategy  = require('passport-facebook').Strategy;
-const config = require('dotenv').config();
 const database = require('../api/database');
 
 module.exports = () => {
@@ -17,9 +16,9 @@ module.exports = () => {
 
     // NaverStrategy 설정
     passport.use(new NaverStrategy({
-            clientID: config.parsed.CLIENT_ID_NAVER,
-            clientSecret: config.parsed.CLIENT_SECRET_NAVER,
-            callbackURL: config.parsed.CALLBACK_URL_NAVER,
+            clientID: process.env.CLIENT_ID_NAVER,
+            clientSecret: process.env.CLIENT_SECRET_NAVER,
+            callbackURL: process.env.CALLBACK_URL_NAVER,
             passReqToCallback: true
         }, (req, accessToken, refreshToken, profile, done) => {
             const _profile = profile._json;
@@ -42,9 +41,9 @@ module.exports = () => {
 
     // FacebookStrategy 설정
     passport.use(new FacebookStrategy({
-            clientID: config.parsed.CLIENT_ID_FACEBOOK,
-            clientSecret: config.parsed.CLIENT_SECRET_FACEBOOK,
-            callbackURL: config.parsed.CALLBACK_URL_FACEBOOK,
+            clientID: process.env.CLIENT_ID_FACEBOOK,
+            clientSecret: process.env.CLIENT_SECRET_FACEBOOK,
+            callbackURL: process.env.CALLBACK_URL_FACEBOOK,
             profileFields: ['id', 'email', 'gender', 'link', 'locale', 'name', 'timezone',
                 'updated_time', 'verified', 'displayName']
         }, function (accessToken, refreshToken, profile, done) {
