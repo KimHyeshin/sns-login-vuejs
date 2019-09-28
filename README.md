@@ -93,5 +93,7 @@ npm run dev
             
 #### feature-5 : passport-kakao로 카카오 로그인 기능 구현
 - [2019.09.29] .env, .env.local 추가하여 키 관리
-
+- [2019.09.29] passport-kakao 추가
+    - KakaoStrategy 설정 추가
+    - Kakao 로그인 버튼 추가
 

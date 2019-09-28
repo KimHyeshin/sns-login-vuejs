@@ -28,12 +28,6 @@ export const actions = {
             .catch(({message}) => { console.log(message)});
     },
     logout ({commit}) {
-        /*return axios.get(`${process.env.VUE_APP_AUTH_HOST}/logout`, {provider, user})
-            .then(() => {
-                commit('setAuth', false);
-                commit('logout');
-            })
-            .catch(({message}) => { console.log(message)});*/
         return commit('setAuth', false);
     }
 
