@@ -99,3 +99,9 @@ npm run dev
     - KakaoStrategy 설정 추가
     - Kakao 로그인 버튼 추가
 
+#### feature-6 : passport-google-oauth20 으로 구글 로그인 기능 구현
+- [2019.09.30] passport-google-oauth20 추가
+    - GoogleStrategy 설정 추가
+    - Google 로그인 버튼 추가
+- [이슈] UserInfoError: Invalid Credentials Error   
+
