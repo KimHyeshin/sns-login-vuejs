@@ -18,7 +18,7 @@
       <!--Naver-->
       <p><a :href="loginUrl.naver"><img height="50" :src="loginImage.naver"/></a></p>
       <!--Facebook-->
-      <!--<div class="fb-login-button" data-width="" data-size="large" data-button-type="login_with" data-auto-logout-link="false" data-use-continue-as="false"></div>-->
+      <p><a :href="loginUrl.facebook"><img height="50" :src="loginImage.facebook"/></a></p>
       <!--Kakao-->
       <p><a :href="loginUrl.kakao"><img height="50" :src="loginImage.kakao"/></a></p>
     </div>
@@ -34,10 +34,12 @@
       return {
         loginUrl: {
           naver: `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.VUE_APP_CLIENT_ID_NAVER}&redirect_uri=${process.env.VUE_APP_CALLBACK_URL_NAVER}&state=STATE`,
+          facebook: `https://www.facebook.com/v4.0/dialog/oauth?client_id=${process.env.VUE_APP_CLIENT_ID_FACEBOOK}&redirect_uri=${process.env.VUE_APP_CALLBACK_URL_FACEBOOK}&state=STATE`,
           kakao: `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.VUE_APP_CLIENT_ID_KAKAO}&redirect_uri=${process.env.VUE_APP_CALLBACK_URL_KAKAO}&response_type=code`
         },
         loginImage: {
           naver: 'http://static.nid.naver.com/oauth/small_g_in.PNG',
+          facebook: require('@/assets/images/facebook_account_login_btn.png'),
           kakao: require('@/assets/images/kakao_account_login_btn_medium_narrow.png')
         },
         msg: ''
