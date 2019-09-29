@@ -2,6 +2,7 @@ const passport = require('passport');
 const NaverStrategy = require('passport-naver').Strategy;
 const FacebookStrategy  = require('passport-facebook').Strategy;
 const KakaoStrategy  = require('passport-kakao').Strategy;
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const database = require('../api/database');
 
 module.exports = () => {
@@ -83,6 +84,40 @@ module.exports = () => {
                 // 정보가 없으면 저장
                 database.storeUserInfo({
                     'authType': 'kakao',
+                    'authId': _profile.id.toString(),
+                    'authName': _profile.properties.nickname,
+                    'authEmail': _profile.id.toString(),
+                    'accessToken': accessToken
+                }, done);
+            }
+        }
+    ));
+
+    // GoogleStrategy 설정
+    passport.use(new GoogleStrategy({
+            clientID: process.env.CLIENT_ID_GOOGLE,
+            clientSecret: process.env.CLIENT_SECRET_GOOGLE,
+            callbackURL: 'http://localhost:3030/loginGoogle/callback',
+            accessType: 'offline',
+            prompt: 'consent',
+            scope: [
+                'https://www.googleapis.com/auth/drive',
+                'https://www.googleapis.com/auth/userinfo.profile',
+                'profile',
+                'https://www.googleapis.com/auth/plus.login',
+                'https://www.googleapis.com/auth/userinfo.email'],
+            passReqToCallback: true
+        }, (req, accessToken, refreshToken, profile, done) => {
+            const _profile = profile._json;
+            console.log(profile);
+            const userInfo = database.getUserInfo({ authType : 'google', authId : _profile.id.toString()});
+
+            if(userInfo) {
+                done(null, userInfo);
+            } else {
+                // 정보가 없으면 저장
+                database.storeUserInfo({
+                    'authType': 'google',
                     'authId': _profile.id.toString(),
                     'authName': _profile.properties.nickname,
                     'authEmail': _profile.id.toString(),

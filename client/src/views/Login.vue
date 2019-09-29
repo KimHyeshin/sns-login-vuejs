@@ -21,6 +21,8 @@
       <p><a :href="loginUrl.facebook"><img height="50" :src="loginImage.facebook"/></a></p>
       <!--Kakao-->
       <p><a :href="loginUrl.kakao"><img height="50" :src="loginImage.kakao"/></a></p>
+      <!--Google-->
+      <p><a :href="loginUrl.google"><img height="50" :src="loginImage.google"/></a></p>
     </div>
   </div>
 </template>
@@ -35,12 +37,14 @@
         loginUrl: {
           naver: `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.VUE_APP_CLIENT_ID_NAVER}&redirect_uri=${process.env.VUE_APP_CALLBACK_URL_NAVER}&state=STATE`,
           facebook: `https://www.facebook.com/v4.0/dialog/oauth?client_id=${process.env.VUE_APP_CLIENT_ID_FACEBOOK}&redirect_uri=${process.env.VUE_APP_CALLBACK_URL_FACEBOOK}&state=STATE`,
-          kakao: `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.VUE_APP_CLIENT_ID_KAKAO}&redirect_uri=${process.env.VUE_APP_CALLBACK_URL_KAKAO}&response_type=code`
+          kakao: `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.VUE_APP_CLIENT_ID_KAKAO}&redirect_uri=${process.env.VUE_APP_CALLBACK_URL_KAKAO}&response_type=code`,
+          google: `https://accounts.google.com/o/oauth2/auth?client_id=${process.env.VUE_APP_CLIENT_ID_GOOGLE}&redirect_uri=${process.env.VUE_APP_CALLBACK_URL_GOOGLE}&scope=https://www.googleapis.com/auth/youtube.readonly&response_type=code&accessType=offline&prompt=consent`
         },
         loginImage: {
           naver: 'http://static.nid.naver.com/oauth/small_g_in.PNG',
           facebook: require('@/assets/images/facebook_account_login_btn.png'),
-          kakao: require('@/assets/images/kakao_account_login_btn_medium_narrow.png')
+          kakao: require('@/assets/images/kakao_account_login_btn_medium_narrow.png'),
+          google: require('@/assets/images/btn_google_signin_light_normal_web.png')
         },
         msg: ''
       }
