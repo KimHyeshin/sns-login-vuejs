@@ -1,7 +1,16 @@
-# sns-login-vuejs
-node, passport, vue, vuex, vue-router
+# SNS Login with Vue js
+node, passport, vue, vuex, vue-router  
+Vuejs를 이용하여 SNS Login을 구현합니다. 처음에는 client와 server를 별도로 구현하여 client는 Vuejs로 server는 Nodejs로 구현할 것입니다. 별도 구현이 완료되면 Vue ServerSide rendering 학습 후 통합할 예정입니다.
+DB도 처음에는 lowdb를 사용하여 가볍게 시작하며, 추후 Firebase나 MongoDB로 개선할 예정입니다. 
 
-## client
+- [Client 소개](#client)
+- [Server 소개](#server)
+- [Developers - App setting](#developers---app-setting)
+- [Update history](#update-history)
+
+<br>
+
+## Client
 ### Project setup
 ```
 $ cd client
@@ -10,17 +19,19 @@ $ npm install
 
 #### Compiles and hot-reloads for development
 ```
-$ npm run serve
+$ npm run serve:dev
+$ npm run serve:prod
 ```
 
 #### Compiles and minifies for production
 ```
-$ npm run build
+$ npm run build:dev
+$ npm run build:prod
 ```
 
 <br>
 
-## server
+## Server
 ### Project setup
 ```
 $ cd server
@@ -34,17 +45,19 @@ npm run dev
 
 <br>
 
+## Developers - App setting
+각 플랫폼 개발자 센터에서 앱 생성 후 설정을 완료한다. 필요한 ClientID 및 Key 값을 가져온다.    
+
+개발자 센터에서 SNS 로그인을 위한 설정
+- [NAVER 로그인 설정](./docs/setting-naver.md)
+- [Kakao 로그인 설정](./docs/setting-kakao.md)
+- Facebook
+- Google
+
+<br>
+
 ## Update history
 ### branches
-#### master  
-- [~2019.07.03] initial commit.  
-- [2019.07.08] branch 분기 
-     
-
-#### develop   
-
-
-    
 #### feature-1  : Vue 스캐폴딩
 - [2019.09.24] client에 vue 스캐폴딩 규격 추가
     - gitignore 업데이트
