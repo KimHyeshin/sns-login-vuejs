@@ -1,24 +1,19 @@
 import Vue from 'vue'
-import Router from 'vue-router'
+import VueRouter from 'vue-router'
+import { store } from '@/store/store'
 
-import HelloWorld from '@/components/HelloWorld'
-import Home from '@/pages/Home'
-import Login from '@/pages/Login'
-import Public from '@/pages/Public'
-import Secure from '@/pages/Secure'
+// views
+import Home from '@/views/Home'
+import Login from '@/views/Login'
+import Public from '@/views/Public'
+import Secure from '@/views/Secure'
+import Page404 from '@/views/Page404'
 
-import NotFound from '@/pages/NotFound'
+Vue.use(VueRouter);
 
-Vue.use(Router)
-
-// auth navigation guard
-const requireAuth = (to, from, next) => {
-  const isAuth = localStorage.getItem('token')
-  const loginPath = `/login?rPath=${encodeURIComponent(to.path)}`
-  isAuth ? next() : next(loginPath)
-}
-
-export default new Router({
+export const router = new VueRouter({
+  mode: 'history',
+  linkActiveClass: 'open active',
   routes: [
     {
       path: '/',
@@ -39,16 +34,27 @@ export default new Router({
       path: '/secure',
       name: 'Secure',
       component: Secure,
-      beforeEnter: requireAuth
-    },
-    {
-      path: '/HelloWorld',
-      name: 'HelloWorld',
-      component: HelloWorld
+      meta: {
+        authRequired: true
+      }
     },
     {
       path: '*',
-      component: NotFound
+      component: Page404
     }
   ]
-})
+});
+
+/**
+ * auth navigation guard
+ */
+router.beforeEach(function (to, from, next) {
+  const authRequired = to.matched.some(function(routeInfo) {
+    return routeInfo.meta.authRequired;
+  });
+  if (authRequired && store.state.authenticated === false) {
+    next({ path: `/login?returnPath=${to.path}`});
+  } else {
+    next();
+  }
+});
