@@ -51,7 +51,7 @@ npm run dev
 개발자 센터에서 SNS 로그인을 위한 설정
 - [NAVER 로그인 설정](./docs/setting-naver.md)
 - [Kakao 로그인 설정](./docs/setting-kakao.md)
-- Facebook
+- [Facebook 로그인 설정](./docs/setting-facebook.md)
 - Google
 
 <br>
