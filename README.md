@@ -52,7 +52,7 @@ npm run dev
 - [NAVER 로그인 설정](./docs/setting-naver.md)
 - [Kakao 로그인 설정](./docs/setting-kakao.md)
 - [Facebook 로그인 설정](./docs/setting-facebook.md)
-- Google
+- [Google 로그인 설정](./docs/setting-google.md)
 
 <br>
 
