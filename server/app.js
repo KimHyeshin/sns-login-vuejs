@@ -1,8 +1,21 @@
 const express = require('express');
 const app = express();
-const session = require('express-session'); // 세션 설정
-const passport = require('passport'); // 여기와
-const passportConfig = require('./config/passport'); // 여기
+const session = require('express-session');
+const passport = require('passport');
+const passportConfig = require('./config/passport');
+
+/**
+ * ssl
+ */
+const https = require('https');
+const http = require('http');
+const fs = require('fs');
+
+const options = {
+    key: fs.readFileSync('config/secret/server.key'),
+    cert: fs.readFileSync('config/secret/server.cert')
+};
+
 /**
  * cors
  * cross-origin 처리
@@ -26,10 +39,11 @@ passportConfig();
 /**
  * server
  */
-app.listen(3030, () => {
-    // server connect
-    console.log('Example app listening on port 3030!');
-});
+// Create an HTTP service.
+http.createServer(app).listen(3030);
+
+// Create an HTTPS service identical to the HTTP service.
+https.createServer(options, app).listen(443);
 
 /**
  * parser
@@ -44,11 +58,9 @@ const commonRoute = require('./router/common');
 const naverLoginRoute = require('./router/login/naver');
 const facebookLoginRoute = require('./router/login/facebook');
 const kakaoLoginRoute = require('./router/login/kakao');
-const googleLoginRoute = require('./router/login/google');
 app.use('/', commonRoute);
 app.use('/loginNaver', naverLoginRoute);
 app.use('/loginFacebook', facebookLoginRoute);
 app.use('/loginKakao', kakaoLoginRoute);
-app.use('/loginGoogle', googleLoginRoute);
 
 

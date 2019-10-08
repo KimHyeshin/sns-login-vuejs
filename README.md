@@ -104,7 +104,8 @@ npm run dev
     - Facebook 로그인 버튼 추가 (https://developers.facebook.com/docs/facebook-login/web?locale=ko_KR#loginbutton)    
 - [2019.09.29] Facebook SDK를 사용하지 않고 로그인 대화 상자 호출 및 리디렉션 URL 설정하는 방식으로 변경
     - Facebook 로그인 버튼을 asset에 추가
-- [이슈] 페이스북 로그인을 사용하려면 https 적용해야함. ERR_SSL_PROTOCOL_ERROR    
+    - [이슈] 페이스북 로그인을 사용하려면 https 적용해야함. ERR_SSL_PROTOCOL_ERROR
+- [2019.10.08] ERR_SSL_PROTOCOL_ERROR 이슈 해결. (https 적용)     
             
 #### feature-5 : passport-kakao로 카카오 로그인 기능 구현
 - [2019.09.29] .env, .env.local 추가하여 키 관리
